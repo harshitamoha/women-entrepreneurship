@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShaktiUdyam – Women Entrepreneurship Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:    #e8436a;
+      --deep:    #1a0a14;
+      --warm:    #fff5f0;
+      --gold:    #f4a840;
+      --muted:   #8a6070;
+      --card-bg: #ffffff;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm);
+      color: var(--deep);
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(255,245,240,0.82);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #f0d8d0;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem; font-weight: 900;
+      color: var(--rose); letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--deep); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: 0.88rem; font-weight: 500;
+      color: var(--muted); transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--rose); }
+    .nav-cta {
+      background: var(--rose); color: #fff;
+      border: none; padding: 10px 26px; border-radius: 50px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; transition: background .2s, transform .15s;
+    }
+    .nav-cta:hover { background: #c73059; transform: translateY(-1px); }
+
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 60px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -120px; right: -120px;
+      width: 680px; height: 680px;
+      background: radial-gradient(circle, #f7c5d0 0%, transparent 70%);
+      border-radius: 50%; z-index: 0;
+    }
+    .hero-text { position: relative; z-index: 1; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fde8ee; color: var(--rose);
+      padding: 6px 18px; border-radius: 50px;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: .8px;
+      text-transform: uppercase; margin-bottom: 28px;
+    }
+    .badge-dot { width: 7px; height: 7px; background: var(--rose); border-radius: 50%; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 900; line-height: 1.12; margin-bottom: 22px;
+    }
+    .hero h1 em {
+      font-style: normal; color: var(--rose);
+      text-decoration: underline;
+      text-decoration-color: var(--gold);
+      text-underline-offset: 6px;
+    }
+    .hero p {
+      font-size: 1.05rem; line-height: 1.75;
+      color: var(--muted); max-width: 480px; margin-bottom: 40px;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--rose); color: #fff;
+      padding: 14px 36px; border-radius: 50px; border: none;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 8px 28px rgba(232,67,106,0.35);
+    }
+    .btn-primary:hover { background: #c73059; transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent; color: var(--deep);
+      padding: 14px 36px; border-radius: 50px;
+      border: 2px solid #d0b0bb;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; transition: border-color .2s, color .2s, transform .15s;
+    }
+    .btn-secondary:hover { border-color: var(--rose); color: var(--rose); transform: translateY(-2px); }
+
+    .hero-visual {
+      position: relative; z-index: 1;
+      display: flex; justify-content: center; align-items: center;
+    }
+    .hero-img-wrap {
+      width: 380px; height: 460px;
+      background: linear-gradient(145deg, #f9d0dc 0%, #fce8d5 100%);
+      border-radius: 220px 220px 160px 160px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(232,67,106,.18);
+    }
+    .hero-icon { font-size: 8rem; }
+    .floating-card {
+      position: absolute; background: #fff; border-radius: 16px;
+      padding: 14px 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.12);
+      font-size: 0.82rem; font-weight: 600;
+    }
+    .fc1 { top: 40px; left: -50px; display: flex; align-items: center; gap: 10px; }
+    .fc2 { bottom: 60px; right: -50px; display: flex; align-items: center; gap: 10px; }
+    .fc-icon { font-size: 1.5rem; }
+    .fc-label { font-size: 0.7rem; color: var(--muted); font-weight: 400; }
+
+    .stats-strip {
+      display: flex; justify-content: center;
+      background: var(--deep); padding: 36px 60px;
+    }
+    .stat-item {
+      flex: 1; text-align: center;
+      border-right: 1px solid rgba(255,255,255,.1);
+      padding: 0 40px;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 900; color: var(--gold);
+    }
+    .stat-label { font-size: 0.82rem; color: rgba(255,255,255,.55); margin-top: 4px; }
+
+    .section { padding: 90px 60px; }
+    .section-tag {
+      font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--rose); font-weight: 600; margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 800;
+      margin-bottom: 50px; max-width: 560px; line-height: 1.2;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: #fff; border-radius: 20px;
+      padding: 36px 30px; border: 1px solid #f0dde5;
+      transition: transform .25s, box-shadow .25s;
+      cursor: pointer; text-decoration: none; color: inherit; display: block;
+    }
+    .feature-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(232,67,106,.12); }
+    .card-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; margin-bottom: 20px;
+    }
+    .ci-rose { background: #fde8ee; }
+    .ci-gold { background: #fef3e0; }
+    .ci-teal { background: #e0f4f4; }
+    .ci-purple { background: #ede8fe; }
+    .feature-card h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem;
+      font-weight: 700; margin-bottom: 10px;
+    }
+    .feature-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+    .card-arrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--rose); font-size: 0.82rem; font-weight: 600; margin-top: 18px;
+    }
+
+    footer {
+      background: #120710; color: rgba(255,255,255,.5);
+      padding: 50px 60px 30px;
+      display: flex; flex-direction: column; gap: 24px;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif; font-size: 1.4rem;
+      font-weight: 900; color: #fff;
+    }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+    .footer-links a {
+      text-decoration: none; color: rgba(255,255,255,.5);
+      font-size: 0.85rem; transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--rose); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding-top: 24px; text-align: center; font-size: 0.8rem;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes floatY {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+    .hero-text { animation: fadeUp .8s ease both; }
+    .hero-visual { animation: fadeUp .8s .2s ease both; }
+    .hero-img-wrap { animation: floatY 5s ease-in-out infinite; }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; text-align: center; }
+      .hero-visual { display: none; }
+      .hero p { max-width: 100%; }
+      .hero-btns { justify-content: center; }
+      .stats-strip { flex-direction: column; padding: 36px 24px; gap: 24px; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); padding: 0 0 20px; }
+      .stat-item:last-child { border-bottom: none; }
+      .section { padding: 60px 24px; }
+      footer { padding: 40px 24px 24px; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Shakti<span>Udyam</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="register.php">Register</a></li>
+    <li><a href="entrepreneurs.php">Entrepreneurs</a></li>   <!-- ✅ FIXED -->
+    <li><a href="schemes.html">Schemes</a></li>
+    <li><a href="stories.html">Success Stories</a></li>
+  </ul>
+  <button class="nav-cta" onclick="window.location.href='register.php'">Register Now</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="badge"><span class="badge-dot"></span> Government of India Initiative</div>
+    <h1>Empowering <em>Women</em><br>to Lead & Grow</h1>
+    <p>ShaktiUdyam is your one-stop portal for women entrepreneurs — register your business, explore government schemes, find training programs, and connect with a thriving community.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="window.location.href='register.php'">Get Started Free</button>
+      <button class="btn-secondary" onclick="window.location.href='entrepreneurs.php'">View Entrepreneurs</button>  <!-- ✅ FIXED -->
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-img-wrap">
+      <span class="hero-icon">👩‍💼</span>
+      <div class="floating-card fc1">
+        <span class="fc-icon">🏆</span>
+        <div>
+          <div>Top Entrepreneur</div>
+          <div class="fc-label">Award 2024</div>
+        </div>
+      </div>
+      <div class="floating-card fc2">
+        <span class="fc-icon">📈</span>
+        <div>
+          <div>₹2.5L Scheme</div>
+          <div class="fc-label">Mudra Yojana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item"><div class="stat-num">48,000+</div><div class="stat-label">Women Registered</div></div>
+  <div class="stat-item"><div class="stat-num">120+</div><div class="stat-label">Govt. Schemes Listed</div></div>
+  <div class="stat-item"><div class="stat-num">350+</div><div class="stat-label">Workshops Conducted</div></div>
+  <div class="stat-item"><div class="stat-num">28</div><div class="stat-label">States & UTs Covered</div></div>
+</div>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="section-tag">What We Offer</div>
+  <div class="section-title">Everything You Need to Succeed</div>
+  <div class="cards-grid">
+
+    <a href="register.php" class="feature-card">
+      <div class="card-icon ci-rose">📝</div>
+      <h3>Register Your Business</h3>
+      <p>Simple 3-step registration to list your enterprise and gain visibility across India.</p>
+      <div class="card-arrow">Register Now →</div>
+    </a>
+
+    <a href="entrepreneurs.php" class="feature-card">   <!-- ✅ FIXED -->
+      <div class="card-icon ci-gold">🔍</div>
+      <h3>View Entrepreneurs</h3>
+      <p>Browse profiles of registered women entrepreneurs, their products, services, and stories.</p>
+      <div class="card-arrow">Explore →</div>
+    </a>
+
+    <a href="schemes.html" class="feature-card">
+      <div class="card-icon ci-teal">🏛️</div>
+      <h3>Govt. Schemes</h3>
+      <p>Access the latest central and state government loan & subsidy schemes tailored for women.</p>
+      <div class="card-arrow">Learn More →</div>
+    </a>
+
+    <a href="stories.html" class="feature-card">
+      <div class="card-icon ci-purple">🌟</div>
+      <h3>Success Stories</h3>
+      <p>Read inspiring stories of women who built successful businesses and changed their lives.</p>
+      <div class="card-arrow">Read Stories →</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">ShaktiUdyam</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="register.php">Register</a>
+      <a href="entrepreneurs.php">Entrepreneurs</a>   <!-- ✅ FIXED -->
+      <a href="schemes.html">Schemes</a>
+      <a href="stories.html">Success Stories</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 ShaktiUdyam – Women Entrepreneurship Portal. A Government of India Initiative.
+  </div>
+</footer>
+
+</body>
+</html>

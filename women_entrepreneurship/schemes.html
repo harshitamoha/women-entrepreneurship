@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Govt Schemes – ShaktiUdyam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --rose: #e8436a; --deep: #1a0a14; --warm: #fff5f0; --muted: #8a6070; --gold: #f4a840; }
+    body { font-family: 'DM Sans', sans-serif; background: #fafafa; color: var(--deep); }
+
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 48px; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--rose); text-decoration: none; }
+    .logo span { color: var(--deep); }
+    .back-btn { text-decoration: none; font-size: 0.85rem; font-weight: 600; color: var(--muted); transition: color .2s; }
+    .back-btn:hover { color: var(--rose); }
+
+    .page-header { padding: 48px 48px 32px; border-bottom: 1px solid #eee; background: #fff; }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; margin-bottom: 6px; }
+    .page-header h1 span { color: var(--rose); }
+    .page-header p { color: var(--muted); font-size: 0.9rem; }
+
+    .section { max-width: 780px; margin: 0 auto; padding: 40px 48px 60px; }
+
+    .scheme-row {
+      display: flex; align-items: flex-start; gap: 18px;
+      padding: 24px 0; border-bottom: 1px solid #eee;
+    }
+    .scheme-row:last-of-type { border-bottom: none; }
+
+    .s-icon { font-size: 1.8rem; width: 44px; flex-shrink: 0; text-align: center; margin-top: 2px; }
+
+    .s-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .s-ministry { font-size: 0.76rem; color: var(--muted); margin-bottom: 7px; }
+    .s-desc { font-size: 0.86rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .s-points { display: flex; gap: 14px; flex-wrap: wrap; }
+    .s-point { font-size: 0.78rem; color: var(--muted); }
+    .s-point::before { content: '✓ '; color: var(--rose); font-weight: 700; }
+
+    .apply-btn { margin-top: 12px; display: inline-block; padding: 7px 20px; border: 1.5px solid var(--rose); border-radius: 50px; color: var(--rose); font-size: 0.8rem; font-weight: 600; cursor: pointer; background: none; font-family: 'DM Sans', sans-serif; transition: all .15s; }
+    .apply-btn:hover { background: var(--rose); color: #fff; }
+
+    .helpline { text-align: center; padding: 28px; background: var(--deep); border-radius: 14px; margin-top: 20px; }
+    .helpline p { font-size: 0.82rem; color: rgba(255,255,255,.5); margin-bottom: 6px; }
+    .helpline .num { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--gold); }
+    .helpline .sub { font-size: 0.73rem; color: rgba(255,255,255,.35); margin-top: 4px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 14px 20px; }
+      .page-header { padding: 28px 20px 20px; }
+      .section { padding: 24px 20px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Shakti<span>Udyam</span></a>
+  <a href="index.html" class="back-btn">← Back to Home</a>
+</nav>
+
+<div class="page-header">
+  <h1>Government <span>Schemes</span></h1>
+  <p>Key schemes available for women entrepreneurs in India</p>
+</div>
+
+<div class="section">
+
+  <div class="scheme-row">
+    <div class="s-icon">💰</div>
+    <div>
+      <div class="s-name">Pradhan Mantri Mudra Yojana</div>
+      <div class="s-ministry">🏛️ Ministry of Finance</div>
+      <div class="s-desc">Provides collateral-free loans to women who want to start or grow a small business. No need to pledge any property or assets to get this loan. Women entrepreneurs get priority and a lower interest rate compared to others.</div>
+      <div class="s-points">
+        <span class="s-point">Loans from ₹50,000 to ₹10 Lakh</span>
+        <span class="s-point">No collateral required</span>
+        <span class="s-point">Available at all major banks</span>
+      </div>
+      <button class="apply-btn" onclick="alert('Redirecting to official MUDRA portal...')">Apply Now →</button>
+    </div>
+  </div>
+
+  <div class="scheme-row">
+    <div class="s-icon">🏭</div>
+    <div>
+      <div class="s-name">Stand-Up India Scheme</div>
+      <div class="s-ministry">🏛️ Ministry of Finance</div>
+      <div class="s-desc">Designed to help women entrepreneurs set up manufacturing, service or trading businesses. The scheme provides larger loans than Mudra and is suitable for women who want to build a proper business unit with employees.</div>
+      <div class="s-points">
+        <span class="s-point">Loans from ₹10 Lakh to ₹1 Crore</span>
+        <span class="s-point">Repayment period up to 7 years</span>
+        <span class="s-point">For manufacturing & services</span>
+      </div>
+      <button class="apply-btn" onclick="alert('Redirecting to Stand-Up India portal...')">Apply Now →</button>
+    </div>
+  </div>
+
+  <div class="scheme-row">
+    <div class="s-icon">🌸</div>
+    <div>
+      <div class="s-name">Mahila Udyam Nidhi Scheme</div>
+      <div class="s-ministry">🏛️ Small Industries Development Bank of India (SIDBI)</div>
+      <div class="s-desc">Supports women who want to start small-scale industries by providing financial assistance at low interest rates. The scheme also helps existing women-owned businesses expand their operations and hire more employees.</div>
+      <div class="s-points">
+        <span class="s-point">Assistance up to ₹10 Lakh</span>
+        <span class="s-point">Low interest rates</span>
+        <span class="s-point">Available via SIDBI branches</span>
+      </div>
+      <button class="apply-btn" onclick="alert('Redirecting to SIDBI portal...')">Apply Now →</button>
+    </div>
+  </div>
+
+  <div class="scheme-row">
+    <div class="s-icon">🎓</div>
+    <div>
+      <div class="s-name">STEP – Support to Training & Employment</div>
+      <div class="s-ministry">🏛️ Ministry of Women & Child Development</div>
+      <div class="s-desc">A free skill training program for women across India covering areas like agriculture, handicrafts, tailoring, computer skills and more. After completing the training, women receive a government certificate that helps them start their own business or find employment.</div>
+      <div class="s-points">
+        <span class="s-point">Completely free training</span>
+        <span class="s-point">Government certificate provided</span>
+        <span class="s-point">Priority for rural women</span>
+      </div>
+      <button class="apply-btn" onclick="alert('Redirecting to STEP scheme portal...')">Apply Now →</button>
+    </div>
+  </div>
+
+  <div class="helpline">
+    <p>Need help applying for a scheme?</p>
+    <div class="num">📞 1800-XXX-XXXX</div>
+    <div class="sub">Toll Free · Mon–Sat 9AM to 6PM</div>
+  </div>
+
+</div>
+</body>
+</html>
